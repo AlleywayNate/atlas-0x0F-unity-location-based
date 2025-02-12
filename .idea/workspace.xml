@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7cfda0a-61c4-42df-ab18-d284ff6b6614" name="Changes" comment="" />
+    <list default="true" id="e7cfda0a-61c4-42df-ab18-d284ff6b6614" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Location AR/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/Location AR/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Location AR/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Location AR/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +67,8 @@
       <updated>1737486506754</updated>
       <workItem from="1737486508430" duration="629000" />
       <workItem from="1737506171390" duration="19000" />
+      <workItem from="1737532911566" duration="10000" />
+      <workItem from="1739270730114" duration="18000" />
     </task>
     <servers />
   </component>

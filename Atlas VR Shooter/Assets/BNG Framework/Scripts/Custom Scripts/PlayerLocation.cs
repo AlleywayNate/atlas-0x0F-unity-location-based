@@ -19,18 +19,18 @@ public class PlayerLocation : MonoBehaviour
         // Log if the player is moving
         if (isMoving)
         {
-            Debug.Log("Player is moving!");
+//           Debug.Log("Player is moving!");
         }
         else
         {
-            Debug.Log("Player is standing still.");
+//            Debug.Log("Player is standing still.");
         }
 
         // Draw a ray from the player's position to visualize it in the scene
         Debug.DrawRay(transform.position, Vector3.up * 0.5f, Color.green);
 
         // Optionally log the player's current position to check where they are in the world
-        Debug.Log("Player Position: " + transform.position);
+//        Debug.Log("Player Position: " + transform.position);
 
         // Update last position for the next frame
         lastPosition = transform.position;

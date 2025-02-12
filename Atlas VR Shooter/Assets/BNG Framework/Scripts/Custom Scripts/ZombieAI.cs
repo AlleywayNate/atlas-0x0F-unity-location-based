@@ -38,7 +38,6 @@ public class ZombieAI : MonoBehaviour
 
         // Log distance to player
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        Debug.Log("Distance to Player: " + distanceToPlayer);
 
         // Trigger walking animation when moving
         if (animator != null)

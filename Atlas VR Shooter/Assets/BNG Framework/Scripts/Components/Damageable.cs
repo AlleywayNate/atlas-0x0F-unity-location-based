@@ -101,6 +101,9 @@ namespace BNG {
             }
 
             Health -= damageAmount;
+            
+            // Debug log to show damage taken
+            Debug.Log($"{gameObject.name} took {damageAmount} damage. Current health: {Health}");
 
             onDamaged?.Invoke(damageAmount);
 

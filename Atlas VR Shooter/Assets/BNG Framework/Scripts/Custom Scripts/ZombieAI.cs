@@ -4,7 +4,6 @@ using UnityEngine.AI; // For NavMesh
 public class ZombieAI : MonoBehaviour
 {
     public Transform player;           // Target to follow (the player)
-    public float detectionRange = 15f; // How far the zombie can detect the player
     public float stoppingDistance = 2f; // Distance to stop before reaching the player
 
     private NavMeshAgent agent;        // Handles pathfinding
@@ -19,6 +18,7 @@ public class ZombieAI : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
+
         if (agent == null)
         {
             Debug.LogError("NavMeshAgent missing on " + gameObject.name);
@@ -28,25 +28,21 @@ public class ZombieAI : MonoBehaviour
 
     void Update()
     {
+        if (player == null) return; // Ensure the player reference is valid
+
+        // Always follow the player
+        agent.SetDestination(player.position);
+
+        // Debugging: Draw a line from zombie to player every frame
+        Debug.DrawLine(transform.position, player.position, Color.green);
+
+        // Log distance to player
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        Debug.Log("Distance to Player: " + distanceToPlayer);
 
-        if (distanceToPlayer <= detectionRange)
-        {
-            // Chase the player
-            agent.SetDestination(player.position);
-
-            // Trigger walking animation
-            if (animator != null)
-                animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            // Stop moving when player is out of range
-            agent.ResetPath();
-
-            if (animator != null)
-                animator.SetBool("isWalking", false);
-        }
+        // Trigger walking animation when moving
+        if (animator != null)
+            animator.SetBool("isWalking", agent.velocity.magnitude > 0.1f);
 
         // Stop moving when close enough to attack
         if (distanceToPlayer <= stoppingDistance)
@@ -56,6 +52,16 @@ public class ZombieAI : MonoBehaviour
         else
         {
             agent.isStopped = false;
+        }
+    }
+
+    // This will draw a small sphere at the player's position in the Scene view
+    void OnDrawGizmos()
+    {
+        if (player != null)
+        {
+            Gizmos.color = Color.red;  // Set color for the gizmo
+            Gizmos.DrawSphere(player.position, 0.5f);  // Draw sphere at player's position
         }
     }
 }

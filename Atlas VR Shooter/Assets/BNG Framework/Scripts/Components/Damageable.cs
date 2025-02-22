@@ -14,6 +14,8 @@ namespace BNG {
 
         public float Health = 100;
         private float _startingHealth;
+        
+        public HealthBar healthBar;
 
         [Tooltip("If specified, this GameObject will be instantiated at this transform's position on death.")]
         public GameObject SpawnOnDeath;
@@ -88,6 +90,12 @@ namespace BNG {
             if (rigid) {
                 initialWasKinematic = rigid.isKinematic;
             }
+            
+            // Initialize the health bar (if not null)
+            if (healthBar != null)
+            {
+                healthBar.SetMaxHealth((int)Health); // Set the initial health in the UI
+            }
         }
 
         public virtual void DealDamage(float damageAmount) {
@@ -106,6 +114,12 @@ namespace BNG {
             Debug.Log($"{gameObject.name} took {damageAmount} damage. Current health: {Health}");
 
             onDamaged?.Invoke(damageAmount);
+            
+            if (healthBar != null)
+            {
+                healthBar.SetHealth((int)Health); // Update the health slider
+            }
+            
 
             // Invector Integration
 #if INVECTOR_BASIC || INVECTOR_AI_TEMPLATE
